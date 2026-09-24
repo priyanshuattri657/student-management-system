@@ -1,5 +1,7 @@
 # Student Management System
+## Live Demo
 
+[View Live Student Management System](https://priyanshuattri657.github.io/student-management-system/)
 A simple and responsive Student Management System for managing student academic records.
 
 ## Features
