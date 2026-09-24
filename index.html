@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="logo">SM</div>
+        <div>
+          <h2>Student</h2>
+          <h2>Management</h2>
+          <small>Academic Records</small>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#dashboard" class="nav-link active" data-testid="dashboard-nav-link">
+          <span>▦</span> Dashboard
+        </a>
+        <a href="#students" class="nav-link" data-testid="students-nav-link">
+          <span>◎</span> Students
+        </a>
+      </nav>
+
+      <div class="system-status">
+        <span class="status-dot"></span>
+        <div>
+          <strong>System ready</strong>
+          <small>Records saved locally</small>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main-content" id="dashboard">
+      <header class="topbar">
+        <div class="mobile-brand">
+          <div class="logo">SM</div>
+          <strong>Student Management</strong>
+        </div>
+
+        <div class="breadcrumb">
+          Workspace <span>/</span> <strong>Dashboard</strong>
+        </div>
+
+        <div class="admin-profile">
+          <span id="current-date"></span>
+          <div class="avatar">AD</div>
+          <div>
+            <strong>Admin</strong>
+            <small>Coordinator</small>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="page-header">
+          <div>
+            <p class="eyebrow">OVERVIEW</p>
+            <h1>Good morning, Admin<span>.</span></h1>
+            <p class="subtitle">
+              Keep your student records organized, current, and easy to find.
+            </p>
+          </div>
+
+          <button
+            class="btn btn-primary"
+            id="open-add-btn"
+            type="button"
+            data-testid="open-add-student-button"
+          >
+            + Add student
+          </button>
+        </section>
+
+        <section class="stats-grid">
+          <article class="stat-card blue" data-testid="total-students-card">
+            <small>Total Students</small>
+            <strong id="total-students">0</strong>
+            <span>Active records</span>
+          </article>
+
+          <article class="stat-card green" data-testid="courses-card">
+            <small>Courses</small>
+            <strong id="total-courses">0</strong>
+            <span>Across all programs</span>
+          </article>
+
+          <article class="stat-card orange" data-testid="semester-card">
+            <small>Semesters</small>
+            <strong id="total-semesters">0</strong>
+            <span>Currently represented</span>
+          </article>
+
+          <article class="stat-card dark" data-testid="latest-student-card">
+            <small>Latest Entry</small>
+            <strong id="latest-student">—</strong>
+            <span id="latest-course">No records yet</span>
+          </article>
+        </section>
+
+        <section class="records-section" id="students">
+          <div class="section-header">
+            <div>
+              <p class="eyebrow">DIRECTORY</p>
+              <h2>Student records</h2>
+            </div>
+
+            <div class="tools">
+              <label class="search-box">
+                <span>⌕</span>
+                <input
+                  id="search-input"
+                  type="search"
+                  placeholder="Search name or roll number..."
+                  data-testid="student-search-input"
+                />
+              </label>
+
+              <div class="filter-wrapper">
+  <button
+    class="filter-btn"
+    id="filter-button"
+    type="button"
+    data-testid="filter-button"
+  >
+    ☷ <span>Filter</span>
+  </button>
+
+  <div class="filter-panel" id="filter-panel" hidden>
+    <label>
+      Course
+      <select id="course-filter">
+        <option value="">All Courses</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Business Administration">Business Administration</option>
+        <option value="Information Technology">Information Technology</option>
+        <option value="Data Science">Data Science</option>
+        <option value="Electrical Engineering">Electrical Engineering</option>
+      </select>
+    </label>
+
+    <label>
+      Semester
+      <select id="semester-filter">
+        <option value="">All Semesters</option>
+        <option value="Semester 1">Semester 1</option>
+        <option value="Semester 2">Semester 2</option>
+        <option value="Semester 3">Semester 3</option>
+        <option value="Semester 4">Semester 4</option>
+        <option value="Semester 5">Semester 5</option>
+        <option value="Semester 6">Semester 6</option>
+        <option value="Semester 7">Semester 7</option>
+        <option value="Semester 8">Semester 8</option>
+      </select>
+    </label>
+
+    <button type="button" class="clear-filter-btn" id="clear-filter">
+      Clear filters
+    </button>
+  </div>
+</div>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>STUDENT</th>
+                  <th>ROLL NUMBER</th>
+                  <th>EMAIL</th>
+                  <th>COURSE</th>
+                  <th>SEMESTER</th>
+                  <th>ACTIONS</th>
+                </tr>
+              </thead>
+              <tbody id="student-table-body" data-testid="student-table-body"></tbody>
+            </table>
+
+            <div class="empty-state" id="empty-state" hidden>
+              <div class="empty-icon">◎</div>
+              <h3>No students found</h3>
+              <p id="empty-message">
+                Add your first student to start building the directory.
+              </p>
+              <button
+                class="btn btn-secondary"
+                id="empty-add-btn"
+                type="button"
+                data-testid="empty-add-student-button"
+              >
+                + Add student
+              </button>
+            </div>
+          </div>
+
+          <div class="table-footer">
+            <span id="record-count">Showing 0 records</span>
+            <span><span class="status-dot"></span> Saved locally</span>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal-backdrop" hidden>
+    <section class="modal" role="dialog" aria-modal="true">
+      <button
+        class="close-btn"
+        id="close-modal-btn"
+        type="button"
+        aria-label="Close"
+        data-testid="close-student-form-button"
+      >
+        ×
+      </button>
+
+      <p class="eyebrow">DIRECTORY</p>
+      <h2 id="modal-title">Add a student</h2>
+      <p id="modal-description">
+        Enter the details below to create a new student record.
+      </p>
+
+      <form id="student-form" novalidate>
+        <input id="student-id" type="hidden" />
+
+        <div class="form-grid">
+          <label>
+            Student name
+            <input
+              id="student-name"
+              type="text"
+              placeholder="e.g. Priya Sharma"
+              data-testid="student-name-input"
+            />
+            <span class="error" id="name-error"></span>
+          </label>
+
+          <label>
+            Roll number
+            <input
+              id="roll-number"
+              type="text"
+              placeholder="e.g. CS-2024-018"
+              data-testid="roll-number-input"
+            />
+            <span class="error" id="roll-error"></span>
+          </label>
+
+          <label>
+            Email address
+            <input
+              id="student-email"
+              type="email"
+              placeholder="student@college.edu"
+              data-testid="student-email-input"
+            />
+            <span class="error" id="email-error"></span>
+          </label>
+
+          <label>
+            Course
+            <select id="student-course" data-testid="student-course-select">
+              <option value="">Select course</option>
+              <option>Computer Science</option>
+              <option>Business Administration</option>
+              <option>Information Technology</option>
+              <option>Data Science</option>
+              <option>Electrical Engineering</option>
+            </select>
+            <span class="error" id="course-error"></span>
+          </label>
+
+          <label>
+            Semester
+            <select id="student-semester" data-testid="student-semester-select">
+              <option value="">Select semester</option>
+              <option>Semester 1</option>
+              <option>Semester 2</option>
+              <option>Semester 3</option>
+              <option>Semester 4</option>
+              <option>Semester 5</option>
+              <option>Semester 6</option>
+              <option>Semester 7</option>
+              <option>Semester 8</option>
+            </select>
+            <span class="error" id="semester-error"></span>
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button
+            class="btn btn-secondary"
+            id="cancel-btn"
+            type="button"
+            data-testid="cancel-student-form-button"
+          >
+            Cancel
+          </button>
+
+          <button
+            class="btn btn-primary"
+            type="submit"
+            data-testid="save-student-button"
+          >
+            ✓ Save student
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
