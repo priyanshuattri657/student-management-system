@@ -1,8 +1,10 @@
 # Student Management System
+
+A simple and responsive Student Management System for managing student academic records. Built as Task 1 of the Auspify Software Development Internship.
+
 ## Live Demo
 
 [View Live Student Management System](https://priyanshuattri657.github.io/student-management-system/)
-A simple and responsive Student Management System for managing student academic records.
 
 ## Features
 
@@ -41,4 +43,42 @@ student-management-system/
 ├── search.png
 ├── student-added.png
 └── student-delete.png
-'''
+```
+
+## Screenshots
+
+### Dashboard
+![Dashboard](dashboard.png)
+
+### Add Student
+![Add Student](add-student.png)
+
+### Student Added
+![Student Added](student-added.png)
+
+### Edit Student
+![Edit Student](edit-student.png)
+
+### Delete Confirmation
+![Delete Alert](delete-alert.png)
+
+### Student Deleted
+![Student Deleted](student-delete.png)
+
+### Search
+![Search](search.png)
+
+## Setup
+
+1. Clone the repository
+```
+   git clone https://github.com/priyanshuattri657/student-management-system.git
+```
+2. Open `index.html` in your browser.
+
+## Author
+
+**Priyanshu Attri**
+GitHub: [priyanshuattri657](https://github.com/priyanshuattri657) · LinkedIn: [priyanshuattri](https://linkedin.com/in/priyanshuattri)
+
+#Auspify #AuspifyTechnologies #AuspifyInternship #AuspifyProjects
